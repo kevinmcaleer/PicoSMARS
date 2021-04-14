@@ -2,55 +2,91 @@
 
 from vl53l0x import VL53L0X
 from machine import Pin
+from time import sleep
 
 class SMARS():
     name = ""
 
     def __init__(self, i2c, name = None, in1=None, in2=None, in3=None, in4=None):
         if in1 or in2 or in3 or in4 == None:
-            in1 = Pin(2) # Motor Input 1
-            in2 = Pin(3) # Motor Input 2
-            in3 = Pin(4) # Motor Input 3
-            in4 = Pin(5) # Motor Input 4
-        else:
-            # check the type is Pin
-            if type(in1) == Pin and type(in2) == Pin and type(in3) == Pin and type(in4) == Pin:
-                # Set the motor inputs on the L293D Motor Driver board
-                self.in1 = in1
-                self.in2 = in2
-                self.in3 = in3
-                self.in4 = in4
-            else:
-                raise RuntimeError("The motor pin values passed were not Type Pin. Please check your code")
+            in1 = 2 # Motor Input 1
+            in2 = 3 # Motor Input 2
+            in3 = 4 # Motor Input 3
+            in4 = 5 # Motor Input 4
+        # Set the motor inputs on the L293D Motor Driver board
+        self.motor_A_forward = Pin(in1, Pin.OUT)
+        self.motor_A_reverse = Pin(in2, Pin.OUT)
+        self.motor_B_forward = Pin(in3, Pin.OUT)
+        self.motor_B_reverse = Pin(in4, Pin.OUT)
         if not name:
             self.name = "PicoSMARS"
         else:
             self.name = name
+
         self.i2c = i2c  
         if self.i2c.scan() == []:
-            # print('The range finder could not be found')
-            raise RuntimeError("The Range Finder could not be found on the I2C bus, check your connections")
-        self.range_finder = VL53L0X(i2c=i2c)
-
-       
-
+            
+            # raise RuntimeError("The Range Finder could not be found on the I2C bus, check your connections")
+            pass
+        # self.range_finder = VL53L0X(i2c=i2c)
     
     def forward(self):
-        # print('forward')
+        # Make the robot go forward for half a second
 
-        in
+        self.motor_A_forward.low()
+        self.motor_A_reverse.high()
+        self.motor_B_forward.high()
+        self.motor_B_reverse.low()
+        sleep(0.5)
+        self.motor_A_forward.low()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.low()
 
     def backward(self):
-        # print('backward')
-        pass
+        # Make the robot go backward for half a second
+
+        self.motor_A_forward.high()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.high()
+        sleep(0.5)
+        self.motor_A_forward.low()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.low()
 
     def turnleft(self):
-        # print('turnleft')
-        pass
+        # Make the robot turn left for half a second
+
+        self.motor_A_forward.high()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.high()
+        self.motor_B_reverse.low()
+        sleep(0.5)
+        self.motor_A_forward.low()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.low()
 
     def turnright(self):
-        # print('turnright')
-        pass
+        # Make the robot turn right for half a second
+
+        self.motor_A_forward.low()
+        self.motor_A_reverse.high()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.high()
+        sleep(0.5)
+        self.motor_A_forward.low()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.low()
+
+    def stop(self):
+        self.motor_A_forward.low()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.low()
 
     @property
     def distance(self):

@@ -27,4 +27,11 @@ def avoid():
 
 def motor_test():
     while True:
-        robot.forward()
+        print("Testing left")
+        robot.turnleft()
+
+def motor_stop():
+    robot.stop()
+
+# motor_test()
+motor_stop()
