@@ -6,9 +6,9 @@ from smars import SMARS
 from time import sleep
 
 # I2C
-sda = Pin(0)
-scl = Pin(1)
-id = 0
+sda = Pin(26)
+scl = Pin(27)
+id = 1
 
 # create the i2c object
 i2c = I2C(id=id, sda=sda, scl=scl) 

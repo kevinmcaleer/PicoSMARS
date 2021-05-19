@@ -9,10 +9,10 @@ class SMARS():
 
     def __init__(self, i2c, name = None, in1=None, in2=None, in3=None, in4=None):
         if in1 or in2 or in3 or in4 == None:
-            in1 = 2 # Motor Input 1
-            in2 = 3 # Motor Input 2
-            in3 = 4 # Motor Input 3
-            in4 = 5 # Motor Input 4
+            in1 = 3 # Motor A Direction Input 1 1423
+            in2 = 2 # Motor A Speed Input 2
+            in3 = 0 # Motor B Direction Input 3
+            in4 = 1 # Motor B Speed Input 4
         # Set the motor inputs on the L293D Motor Driver board
         self.motor_A_forward = Pin(in1, Pin.OUT)
         self.motor_A_reverse = Pin(in2, Pin.OUT)
@@ -33,10 +33,10 @@ class SMARS():
     def forward(self):
         # Make the robot go forward for half a second
 
-        self.motor_A_forward.low()
-        self.motor_A_reverse.high()
-        self.motor_B_forward.high()
-        self.motor_B_reverse.low()
+        self.motor_A_forward.high()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.high()
         sleep(0.5)
         self.motor_A_forward.low()
         self.motor_A_reverse.low()
@@ -46,10 +46,10 @@ class SMARS():
     def backward(self):
         # Make the robot go backward for half a second
 
-        self.motor_A_forward.high()
-        self.motor_A_reverse.low()
-        self.motor_B_forward.low()
-        self.motor_B_reverse.high()
+        self.motor_A_forward.low()
+        self.motor_A_reverse.high()
+        self.motor_B_forward.high()
+        self.motor_B_reverse.low()
         sleep(0.5)
         self.motor_A_forward.low()
         self.motor_A_reverse.low()
@@ -59,10 +59,10 @@ class SMARS():
     def turnleft(self):
         # Make the robot turn left for half a second
 
-        self.motor_A_forward.high()
-        self.motor_A_reverse.low()
-        self.motor_B_forward.high()
-        self.motor_B_reverse.low()
+        self.motor_A_forward.low()
+        self.motor_A_reverse.high()
+        self.motor_B_forward.low()
+        self.motor_B_reverse.high()
         sleep(0.5)
         self.motor_A_forward.low()
         self.motor_A_reverse.low()
@@ -72,10 +72,10 @@ class SMARS():
     def turnright(self):
         # Make the robot turn right for half a second
 
-        self.motor_A_forward.low()
-        self.motor_A_reverse.high()
-        self.motor_B_forward.low()
-        self.motor_B_reverse.high()
+        self.motor_A_forward.high()
+        self.motor_A_reverse.low()
+        self.motor_B_forward.high()
+        self.motor_B_reverse.low()
         sleep(0.5)
         self.motor_A_forward.low()
         self.motor_A_reverse.low()
