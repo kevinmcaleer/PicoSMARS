@@ -26,9 +26,9 @@ class SMARS():
         self.i2c = i2c  
         if self.i2c.scan() == []:
             
-            # raise RuntimeError("The Range Finder could not be found on the I2C bus, check your connections")
+            raise RuntimeError("The Range Finder could not be found on the I2C bus, check your connections")
             pass
-        # self.range_finder = VL53L0X(i2c=i2c)
+        self.range_finder = VL53L0X(i2c=i2c)
     
     def forward(self):
         # Make the robot go forward for half a second
