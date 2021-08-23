@@ -7,5 +7,8 @@ Check out the accompanying video:
 
 ---
 
+## PicoSMARS website:
+Visit <https://www.smarsfan.com/bots/pico/picosmars> to download the STL files, code and to learn more about this project.
+
 ## SMARS Mini website
 Visit <https://www.smarsfan.com/smars_mini> to download the STL files and learn more about this project.
