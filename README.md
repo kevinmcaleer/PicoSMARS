@@ -8,7 +8,8 @@ I also have a YouTube channel dedicated to Small Robots, be sure to check it out
 ---
 
 Check out the accompanying video:
-![https://youtu.be/gJUsHlIcHdk](https://www.youtube.com/embed/gJUsHlIcHdk)
+
+[![PicoSMARS](https://img.youtube.com/vi/gJUsHlIcHdk/0.jpg)](https://www.youtube.com/watch?v=gJUsHlIcHdk)
 
 A Raspberry Pi Pico / Pimoroni Tiny2040 powered SMARS Robot.
 Uses the VL53L0X Time of flight Range finder as well as the MX1508 Motor driver board.
